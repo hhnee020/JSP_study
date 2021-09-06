@@ -23,6 +23,36 @@ th, td {
 }
 </style>
 
+<script>
+/// 공백이 저장되는 걸 막는 것을 막는것을 처리;
+function fn_submit(){
+	
+	if( document.frm.deptno.value == "" ){
+		
+		alert("부서번호를 입력해 주세요;");
+		 document.frm.deptno.focus();
+		 return false; 
+		 
+	}
+	
+	
+	
+	if( document.frm.dname.value == "" ){
+			
+			alert("부서이름을 입력해 주세요;");
+			 document.frm.dname.focus();
+			 return false;
+			 
+	}
+	
+///////////		
+	document.frm.submit();
+	
+}
+
+</script>
+
+
 <body>
 
 <form name="frm" method="post" action="deptWriteSave.jsp">
@@ -42,7 +72,8 @@ th, td {
    </tr>
    <tr>
       <th colspan="2">
-      <button type="submit">등록</button>
+      <button type="submit" onclick="fn_submit(); return false">등록</button>
+       <!-- -- return false  : 저장 기능 을 없앤다;  저장을 막기 위해 --> 
       <button type="reset">취소</button>
       </th>
    </tr>
