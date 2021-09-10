@@ -90,7 +90,7 @@ Header
 	<article>
 <div style ="width:600px; margin:0 auto; ">
 
-<table class="table1" align="center">
+<table class="table1">
 
 <caption class="caption1">일반게시판 목록화면</caption>
 
@@ -120,40 +120,35 @@ Header
 	%>
 	<tr>
 		<th class="td1"><%=rownum %></th>
-		<th class="td1" style="text-align:left;">&nbsp;<%=title %></th>
+		<th class="td1" style="text-align:left;">&nbsp;
+			<a href="boardDetail.jsp?unq=<%=unq %>"><%=title %></a>
+		</th>
 		<th class="td1"><%=name %></th>
 		<th class="td1"><%=rdate %></th>
 		<th class="td1"><%=hits %></th>
 	</tr>
-	
-	
 	<%
 		rownum--;
 		}
 	%>
 	
 </table>
-</form>
-
+	<!----- 페이징 숫자 처리---------->
 	<div style="width:600px; margin-top:10px; text-align:center;">
-		<%
-		
-		for(int i=1; i<= totalpage; i++){
-		
-		%>
-		
-			<a href="boardList.jsp?page_no=<%=i %>"><%=i %></a>
-		
-		<%
-		
-		}
-		
-		%>
+		 <%
+		 for(int i=1; i<=totalpage; i++) {
+		 %>
+		 		<a href="boardList.jsp?page_no=<%=i %>"><%=i %></a>
+		 <%
+		 }
+		 %>
+	</div>
+	<!----- 페이징 숫자 처리---------->
 	<div style="width:600px; margin-top:10px; text-align:right;">
 		<button type="button" class="button1" onclick="location='boardWrite.jsp';" >글쓰기</button>
 	</div>
 	</div>
-</div>
+
 	</article>
 </section>
 

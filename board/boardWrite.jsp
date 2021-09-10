@@ -23,7 +23,7 @@ function fn_submit(){
 	
 	if( document.frm.title.value == "" ){
 		
-		alert("부서번호를 입력해 주세요;");
+		alert("제목을 입력해 주세요;");
 		 document.frm.title.focus();
 		 return false; 
 		 
@@ -33,7 +33,7 @@ function fn_submit(){
 	
 	if( document.frm.pass.value == "" ){
 			
-			alert("부서이름을 입력해 주세요;");
+			alert("암호를 입력해 주세요;");
 			 document.frm.pass.focus();
 			 return false;
 			 
