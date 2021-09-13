@@ -173,7 +173,7 @@ Header
 			<!--<input type="submit" value="저장"/>
 			<input type="reset" value="취소"> -->
 
-			<button type="button" class="button1 " onclick="location='boardModifiy.jsp?n=<%=unq%>'">수정</button>
+			<button type="button" class="button1 " onclick="location='boardModify.jsp?n=<%=unq%>'">수정</button>
 			<button type="button" class="button1" onclick="location='passWrite.jsp?n=<%=unq%>'">삭제</button>
 			<!-- -------페이지 이동 ;---- -->
 		</th>
