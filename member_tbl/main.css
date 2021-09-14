@@ -1,0 +1,53 @@
+@charset "UTF-8";
+
+body {
+	font-size:12px;
+	color:#333333;
+	font-family:맑은 고딕;
+}
+a:link {
+	text-decoration:none;
+	color:#ffffff;
+}
+a:visited {
+	text-decoration:none;
+	color:#ffffff;
+}
+a:active {
+	text-decoration:none;
+	color:#ffffff;
+}
+a:hover {
+	text-decoration:none;
+	color:#ffffff;
+}
+header {
+	width:100%;
+	height:60px;
+	text-align:center;
+	color:#ffffff;
+	background-color:#949494;
+	vertical-align:middle;   /*top,middle,bottom */
+	line-height:2.3;
+}
+nav {
+	width:100%;
+	height:26px;
+	text-align:left;
+	color:#ffffff;
+	background-color:#2d2d2d;
+	line-height:2.3;
+}
+section {
+	width:100%;
+	height:450px;
+	background-color:#8bc440;
+}
+footer {
+	width:100%;
+	height:20px;
+	background-color:#555555;
+	color:#ffffff;
+	text-align:center;
+	line-height:1.6;
+}
