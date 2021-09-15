@@ -21,10 +21,10 @@ if( no == null || no.equals("") ) {
 String sql  = " select "
 	  		+ "    	member_id,"
 	  		+ "		member_name,"
-	  		+"		member_grade,"
+	  		+"		nvl(member_grade,' ') member_grade, "
 	  		+"		nvl(MEMBER__HOBBY,' ') MEMBER__HOBBY,"
 	  		+"		to_char(member_date,'yyyy-mm-dd') member_date "
-	   		+ " from member_tbl "
+	   		+ " 	from member_tbl "
 	   		+ "    where member_no='"+no+"' ";
 
 ResultSet rs = stmt.executeQuery(sql);
@@ -142,7 +142,7 @@ function fn_submit() {
 		<div style="text-align:center;width:100%;">
 			<button type="submit" onclick="fn_submit();return false;">수정</button>
 			&nbsp;
-			<button type="button" onclick=" location='friendList_my.jsp?member_no=<%=no %>' ">조회</button>
+			<button type="button" onclick=" location='FriendList_res.jsp?member_no=<%=no %>' ">조회</button>
 		</div>
 		</form>
 		</div>

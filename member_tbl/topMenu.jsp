@@ -12,7 +12,7 @@
 	&nbsp;&nbsp;&nbsp;
 	<a href="memberList.jsp">회원목록조회/수정</a>
 	&nbsp;&nbsp;&nbsp;
-	<a href="friendList.jsp">친구현황조회</a>
+	<a href="FriendList.jsp">친구현황조회</a>
 	&nbsp;&nbsp;&nbsp;
 	<a href="index.jsp">홈으로</a>
 </body>

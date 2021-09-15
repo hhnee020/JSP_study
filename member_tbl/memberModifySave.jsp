@@ -1,9 +1,12 @@
+<%@page import="java.util.StringTokenizer"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    
+
+
 <%@ include file="../include/dbcon.jsp" %>
 
 <%
+
 String no = request.getParameter("no");
 String id = request.getParameter("id");
 String name = request.getParameter("name");
@@ -30,7 +33,16 @@ if(no == null || id == null || name == null ||
 // hobby[0] = "영화";
 // hobby = null;
 
+
 String str = "";
+/*StringTokenizer tokenizer =new StringTokenizer("hobby",",");
+
+while (tokenizer.hasMoreTokens()){
+	
+		out.print(tokenizer.nextToken());
+	
+	}*/
+
 
 if( hobby != null ) {
 	for(int i=0; i<hobby.length; i++) {
