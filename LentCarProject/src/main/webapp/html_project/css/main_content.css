@@ -1,0 +1,133 @@
+
+/*상품정보 관련*/
+.tbl1_cap{
+    float:left;
+    margin-top:30px;
+    margin-bottom:10px;
+}
+
+.tbl1_btn{
+    float:right;
+    margin-top:30px;
+    margin-bottom:10px;
+}
+
+.btn1{  
+    width:20px;
+    height:20px;
+    font-size:10px; 
+    padding:0px;
+
+    color:#ccc;
+    border:1px solid #ccc;
+    background-color:white;
+}
+
+.carImg{
+    width:230px;
+    height:230px;
+}
+
+.str1{
+    color:green;
+    font-size:20px;
+    font-weight:bold;
+    font-family:'맑은 고딕';
+}
+
+.str2{  
+    color:rgb(138, 138, 138);
+    font-size:20px;
+    font-weight:bold;
+    font-family:'맑은 고딕';
+}
+
+.str3{
+    color : rgb(ㄴ165, 163, 163);
+    font-size:12px;
+    font-family:'맑은 고딕';
+    border-left:1px solid rgb(165, 163, 163);
+    margin-left : 5px;
+}
+
+.tbl1{
+    width:1000px;
+    background-color:aliceblue;
+    border:1px solid #ccc;
+    border-collapse:collapse;
+    text-align:center;
+    vertical-align:middle;
+}
+.td1{
+    padding-top:30px;
+}
+
+.td2{
+    width:100px;
+    height:20px;
+
+    text-align:left;
+    font-size:13px;
+    font-family:'맑은 고딕';
+    padding-left:10px;
+}
+
+.td3{
+    width:100px;
+    height: 20px;
+    text-align:left; 
+    padding-bottom:30px;
+    padding-left:10px; 
+}
+
+.dis_before{
+    color:rgb(175, 174, 174);
+    font-size:15px;
+    font-family:'맑은 고딕';
+    text-decoration:line-through
+}
+
+.dis_after{
+    font-size:15px;
+    font-weight:bold;
+    font-family:'맑은 고딕';
+}
+
+/*게시판 관련*/
+.box1{
+    width:270px;
+    height:150px;
+    border:1px solid #dce3e9;
+    padding:20px;
+    position:relative;
+    float:left;
+    margin-top:30px;    
+    margin-right:20px;
+}
+
+.box1_title{
+    font-size:15px;
+    font-weight:bold;
+    margin-bottom:15px;    
+}
+.box1_plus{
+    color:green;
+    font-size:20px;
+    float:right; 
+}
+
+.box1 ul li{
+    font-size:12px;
+    margin-left:15px;
+    margin-bottom:8px;
+}
+
+.box_date{
+    color:rgb(170, 169, 169);
+    float:right;
+}
+
+
+.box2{
+    margin-top:20px;
+}

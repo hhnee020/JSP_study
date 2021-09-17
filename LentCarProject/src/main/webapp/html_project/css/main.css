@@ -1,0 +1,181 @@
+html,body{
+    margin:0px;
+    padding:0px;
+    width:1500px;
+}
+
+ul{
+    padding:0px;
+    margin:0px;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+/*탑메뉴 관련*/
+.bg_top{
+    width:100%;
+    height:35px;
+    border-bottom:1px solid #ddd;
+    background-color:#f9f9f9;
+    position:absolute;
+}
+
+.top_menu{
+    height:35px;
+}
+
+.ul1{
+    float:left;
+    padding-top:7px;
+}
+
+.ul1 li{
+    font-size:10px;
+	color:#555;
+    list-style:none;
+    float:left;
+    border-left:1px solid #ccc;
+    padding-left:10px;
+    padding-right:10px;
+}
+
+.ul2{
+    float:right;
+    padding-top:7px;
+}
+
+.ul2 li{
+    font-size:10px;
+	color:#555;
+    list-style:none;
+    float:left;
+    border-left:1px solid #ccc;
+    padding-left:10px;
+    padding-right:10px;
+}
+
+/*메인 이미지 관련*/
+.logo{
+    width:100%;
+    height:80px;
+    text-align:center;
+    padding-bottom:0px;
+    margin-top:20px;
+}
+
+.logo1{
+    position:relative;
+    top:45%;
+    width:30%;
+    height:36px;
+    text-align:left;
+    float:left;
+}
+
+.logo2{
+    width:40%;
+    height:80px;
+    float:left;
+
+}
+
+.logo3{
+    position:relative;
+    top:45%;
+    height:36px;
+    text-align:right;
+
+}
+
+/*네비게이션 관련*/
+
+.nav_menu1 {
+    float:left;
+    padding-top:10px;
+    padding-left:15px;
+}
+
+.nav_menu1 li{
+    color:white;
+    font-size:13px;
+    font-weight:bold;
+    list-style:none;
+    float:left;
+    padding-right:25px;
+}
+
+.nav_menu2{
+    float:right;
+    padding-top:10px;
+    padding-right:15px;
+}
+
+.nav_menu2 li{
+    color:white;
+    font-size:13px;
+    font-weight:bold;
+    list-style:none;
+    float:left;
+    padding-left:25px;
+}
+
+/*footer 관련*/
+.ft1{
+    width:1000px;
+    height:40px;
+    text-align:center;
+    border-top:1px solid rgb(163, 163, 163);
+    border-bottom:1px solid rgb(163, 163, 163);
+}
+
+.ul_ft{
+    margin-left:135px;
+    margin-top:13px;
+}
+
+.ul_ft li {
+	color:#555;
+        font-size:14px;
+        font-family:'맑은 고딕';
+    list-style:none;
+    font-weight:bold;
+    float:left;
+    padding-left:12px;
+    padding-right:12px;
+}
+
+.select_ft{
+    width:200px;
+    text-align:center;
+}
+
+.ft2{
+    width:1000px;
+    height:90px;
+    font-size:12px;
+    font-family:'맑은 고딕';
+    text-align:center;
+    padding-top:20px;
+
+}
+
+.ftTitle{
+    color:rgb(126, 126, 126);
+    font-size:12px;
+    font-weight:bold;
+    padding-left:10px;
+
+}
+
+.ft3{
+    width:1000px;
+    height:30px;
+    color:rgb(158, 158, 158);
+    font-size:12px;
+    text-align:center;
+    padding-top:20px;
+    vertical-align: bottom;
+}
