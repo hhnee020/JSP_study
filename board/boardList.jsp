@@ -6,6 +6,9 @@
 <%@ include file="../include/dbcon.jsp" %>
 
 <%
+
+
+
 //처음 페이지 설정 ; 출력페이지 번호;
 String page_no =request.getParameter("page_no"); //사용자가 클릭한 페이지;
 
@@ -77,6 +80,16 @@ int rownum = total- ( (Integer.parseInt(page_no)-1)*unit );
 //행번호 역순 1-0 2-10 3-20
 //페이지 수마다 행번호  ; total -10; 전체 게시글 수 - ( ( 현재 페이지 - 1 ) * 페이지 당 게시글 수 )
 
+// page_no 11, pg_sno 11,pg_eno 20; ((17-1)*10)/10+1 17page_no
+int pg_sno =  ((Integer.parseInt(page_no)-1)/10)*10+1;
+int pg_eno = pg_sno+9;
+
+//pg_eno 오버해서 나오는 것 처리하기;
+
+if(pg_eno > totalpage){
+	
+	pg_eno = totalpage;
+}
 
 
 %>
@@ -160,15 +173,41 @@ Header
 	
 </table>
 	<!----- 페이징 숫자 처리---------->
+	
+	
 	<div style="width:600px; text-align:center;">
-		 <%
-		 for(int i=1; i<=totalpage; i++) {
+		
+		<a href="boardList.jsp?page_no=1">[처음으로]</a>
+		<a href="boardList.jsp?page_no=<%=pg_sno-1 %>">[이전으로]</a>
+		
+		<%
+		 for(int i=pg_sno; i<=pg_eno; i++) {///102페이지
 		 %>
-		 		<a href="boardList.jsp?page_no=<%=i %>"><%=i %></a>
+		 <a href="boardList.jsp?page_no=<%=i %>"><%=i %></a>
 		 <%
 		 }
 		 %>
+		<%
+		if( pg_eno == totalpage ){
+			
+			%>
+			<span style="color:#6666">[다음으로] </span>	
+			<% 
+		}else{
+			
+			%>
+			<a href="boardList.jsp?page_no=<%=pg_eno+1 %>">[다음으로]</a> 	
+			<% 
+			
+		}
+		
+		%> 
+		
+		<!------버튼을 누르면 11페이지 : 10페이지 +1 = page_no=11    --> 
+		<a href="boardList.jsp?page_no=<%=totalpage %>"> [맨끝으로] </a>
+	
 	</div>
+
 	<!----- 페이징 숫자 처리---------->
 	
 	<!-- ------검색 처리-------- -->

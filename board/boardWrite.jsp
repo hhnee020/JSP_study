@@ -1,13 +1,20 @@
-
-
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
+<%@ include file="../include/dbcon.jsp" %>
 
+<%
+/*
+for(int i=1; i<=1000; i++) {
+	
+	String sql = "insert into nboard(unq,title,pass,name,content,rdate) "
+			    + " VALUES(nboard_seq.nextval,'test"+i+"','1111','aa','bb"+i+"',sysdate)";
+	stmt.executeQuery(sql);
+}*/
+%>
 
 
 <!DOCTYPE html>
-
 <html lang="kr">
  <head>
   <meta charset="UTF-8">
@@ -17,39 +24,20 @@
  </head>
 
 <script>
-
-
-function fn_submit(){
-	
-	if( document.frm.title.value == "" ){
-		
-		alert("제목을 입력해 주세요;");
-		 document.frm.title.focus();
-		 return false; 
-		 
+function fn_submit() {
+	if( document.frm.title.value == "" ) {
+		alert("제목을 입력해주세요.");
+		document.frm.title.focus();
+		return false;
 	}
-	
-	
-	
-	if( document.frm.pass.value == "" ){
-			
-			alert("암호를 입력해 주세요;");
-			 document.frm.pass.focus();
-			 return false;
-			 
+	if( document.frm.pass.value == "" ) {
+		alert("암호를 입력해주세요.");
+		document.frm.pass.focus();
+		return false;
 	}
-	
-///////////		
 	document.frm.submit();
-	
 }
-
-
 </script>
-
-<style>
-
-</style>
 
 <body>
 
@@ -58,23 +46,26 @@ Header
 </header>
 
 <nav>
-<%@ include file="../include/topmenu.jsp" %>
+	<!-- 탑 메뉴 시작 -->
+	<%@ include file="../include/topmenu.jsp" %>
+	<!-- 탑 메뉴 종료 -->
 </nav>
 
 <section>
 	<aside>
+	<!-- 좌 메뉴 시작 -->
 	<%@ include file="../include/leftmenu.jsp" %>
+	<!-- 좌 메뉴 종료 -->
 	</aside>
+	
 	<article>
 
+		<div style="width:600px; margin:0 auto;">
+		
 <form name="frm" method="post" action="boardWriteSave.jsp">
 
-
-
-<table class="table1" align="center">
-
+<table class="table1">
 <caption class="caption1">일반게시판 등록화면</caption>
-
 	<colgroup>
 		<col width="25%"/>
 		<col width="*"/>
@@ -108,20 +99,20 @@ Header
 			<!--<input type="submit" value="저장"/>
 			<input type="reset" value="취소"> -->
 
-			<button type="submit" class="button1"  onclick="fn_submit();return false;" >저장</button>
+			<button type="submit" class="button1" onclick="fn_submit(); return false;">저장</button>
 			<button type="reset" class="button1">취소</button>
 
 		</th>
 	</tr>
 </table>
 </form>
-
+		</div>
 
 	</article>
 </section>
 
 <footer>
-<%@ include file="../include/footmenu.jsp" %>
+	<%@ include file="../include/footmenu.jsp" %>
 </footer>
 
 </body>

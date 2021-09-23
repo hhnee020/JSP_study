@@ -5,32 +5,32 @@
 <!-- DB 연결 -->
 <%@ include file="../include/dbcon.jsp" %>
 
-<!-- 파라메터 값 받기 list 에서 클릭시에 넘어오는 값 -->
+<!-- 파라메터 값 받기 -->
 <%
 String unq = request.getParameter("unq");
 %>
 
-<!-- 널값 체크 널이거나 공백이거나 -->
+<!-- 널값 체크 -->
 <%
 if( unq == null || unq.trim().equals("") ) {
 %>
 	<script>
-	alert("잘못된 경로 접근!!");
+	alert("잘못된 경로로의 접근!!");
 	location = "boardList.jsp";
 	</script>
 <%
 	return;
 }
 %>
-<!-- SQL 작성 및 적용--//nvl 공백 대처>
+<!-- SQL 작성 및 적용-->
 <%
 String sql1 = "SELECT "
-			+ "		 title, nvl(name,' ') name ,content,rdate, udate "								
+			+ "		 title,nvl(name,' ') name,content,rdate, "
+			+ "        udate  "
+			//+ "      nvl(to_char(udate,'yyyy-mm-dd'),' ') udate "
 			+ "	   FROM nboard "
 			+ "			WHERE unq='"+unq+"'";
 ResultSet rs1 = stmt.executeQuery(sql1);
-
-///// sql 변수 값 초기화
 
 String title = "";
 String name = "";
@@ -38,42 +38,55 @@ String content = "";
 String rdate = "";
 String udate = "";
 
-
-// sql 값 존재여부 
 if( rs1.next() ) {
-	
 	title = rs1.getString("title");
 	name = rs1.getString("name");
 	content = rs1.getString("content");
 	rdate = rs1.getString("rdate");
 	udate = rs1.getString("udate");
-	/// 변경일이 null일때 
-	if( udate == null ){
-		udate ="---";
-		
+	if( udate == null ) {
+		udate = "---";
 	}
-	// 내용이 not null   replace 텍스트 바꾸기
-	if(content !=null ){
-		content =content.replace("\n", "<br>");
-		content =content.replace(" ", "$nbsp;");
+	if( content != null ) {
+		content = content.replace("\n","<br>");
+		content = content.replace(" ","&nbsp;");
 	}
 }
 
 if( title.equals("") ) {
-	 // 재목이 공백인가
 %>
-<script>
-alert("잘못된 경로 의 접근!!");
-location = "boardList.jsp";
-</script>
+		<script>
+		alert("잘못된 경로로의 접근!!");
+		location = "boardList.jsp";
+		</script>
 <%
 	return;	
 }
 
-//조회수 증가; ++  a=a+1
+// ++  a=a+1
 String sql2 = " UPDATE nboard SET hits=hits+1  WHERE unq='"+unq+"'";
 stmt.executeUpdate(sql2);
 
+//int  b_unq= Integer.parseInt(unq)-1;
+//int  n_unq= Integer.parseInt(unq)-1;
+int b_unq = 0;
+int n_unq = 0;
+
+// 이전 unq를 얻는 상황
+//select max(unq) from nboard where unq <8; --- 8보다 작은 데이터중에 가장 큰  :7
+String sql3 = "select nvl(max(unq),0) b_unq from nboard where unq < " + unq;
+ResultSet rs3 = stmt.executeQuery(sql3);
+if( rs3.next() ) {
+	b_unq = rs3.getInt("b_unq");
+}
+
+// 다음 unq를 얻는 상황
+//select min(unq) from nboard where unq >8; --- 8보다 큰 데이터중에 가장 작은 :9
+String sql4 = "select nvl(min(unq),0) n_unq from nboard where unq > " + unq;
+ResultSet rs4 = stmt.executeQuery(sql4);
+if( rs4.next() ) {
+	n_unq = rs4.getInt("n_unq");
+}
 %>
 
 
@@ -152,7 +165,9 @@ Header
 	<tr>
 		<th class="th1">내용</th>
 		<td class="td1" style="text-align:left;">
-		<%=content %>
+		<div style="width:99%;height:70px;overflow:auto;">
+			<%=content %>
+		</div>
 		</td>
 	</tr>
 	<tr>
@@ -169,13 +184,25 @@ Header
 	</tr>
 	<tr>
 		<th colspan="2" height="40">
+		
+			<%
+			////// 이전 버튼 ;
+			if(b_unq > 0) {
+			%>
+				<button type="button" onclick="location='boardDetail.jsp?unq=<%=b_unq %>'" ><<</button>
+			<%
+			}
+			////// 다음 버튼 ;
+			if(n_unq > 0) {
+			%>
+			
+				<button type="button" onclick="location='boardDetail.jsp?unq=<%=n_unq %>'" >>></button>
+			<%
+			}
+			%>
+			<button type="button" class="button1" onclick="location='boardModify.jsp?n=<%=unq %>'" >수정</button>
+			<button type="button" class="button1" onclick="location='passWrite.jsp?n=<%=unq %>'" >삭제</button>
 
-			<!--<input type="submit" value="저장"/>
-			<input type="reset" value="취소"> -->
-
-			<button type="button" class="button1 " onclick="location='boardModify.jsp?n=<%=unq%>'">수정</button>
-			<button type="button" class="button1" onclick="location='passWrite.jsp?n=<%=unq%>'">삭제</button>
-			<!-- -------페이지 이동 ;---- -->
 		</th>
 	</tr>
 </table>
