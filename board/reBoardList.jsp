@@ -31,14 +31,13 @@ if(!page_no.matches("[0-9]+") ){
 ///////////////////////////////////////////////
 
 
-int unit=10;
 
 //(1-1)*10+1; +1는 1부터 시작  
 //시작 번호;
-int rn_sno = (Integer.parseInt(page_no)-1)*unit+1;
+int rn_sno = (Integer.parseInt(page_no)-1)*10+1;
 
 //끝번호 ;
-int rn_eno =  rn_sno+ (unit-1);
+int rn_eno =  rn_sno+ (10-1);
 
 
 String sql_Total= "select count(*) total from reboard " ;
@@ -49,7 +48,7 @@ rs_Total.next();
 int total = rs_Total.getInt("total");
 
 
-int totalpage = (int)Math.ceil((double)total/unit);
+int totalpage = (int)Math.ceil((double)total/10);
 
 
 
@@ -59,9 +58,12 @@ String sql2 = "select b.* from ( "
         	+ "				from reboard order by gid desc , thread asc ) a ) b "
 			+ "	where rn between "+rn_sno+" and "+rn_eno;
 
+//select *from reboard order by gid desc, thread asc;
+//gid 숫자 높은순 thread 숫자(a부터) 적은순
+
 ResultSet rs2 = stmt.executeQuery(sql2);
 
-int rownum = total- ( (Integer.parseInt(page_no)-1)*unit );
+int rownum = total- ( (Integer.parseInt(page_no)-1)*10 );
 //행번호 역순 1-0 2-10 3-20
 //페이지 수마다 행번호  ; total -10; 전체 게시글 수 - ( ( 현재 페이지 - 1 ) * 페이지 당 게시글 수 )
 
@@ -117,7 +119,18 @@ Header
 <table class="table1">
 
 <caption class="caption1">답변 게시판 목록화면</caption>
-
+		<select name="page_no" onchange="location='reBoardList.jsp?page_no='+this.value ">
+		<!-- ---this.value-- -->
+		<%
+		for(int i=1; i<=totalpage; i++){
+			%>
+			
+			<option value="<%=i %>" <%if (i == Integer.parseInt(page_no) ) { out .print("selected"); } %>><%=i %>page</option>
+		<%	
+		}
+		%>
+		
+		</select>
 	<colgroup>
 		<col width="10%"/>
 		<col width="55%"/>
@@ -148,7 +161,7 @@ Header
 			space +="&nbsp;&nbsp;";
 			
 		}
-		if(thread.length()>1){ space += "[답글]";
+		if(thread.length()>1){ space += "<img src='../img/re.png' width='25' height='25'>";
 			
 	}
 	%>
@@ -173,16 +186,42 @@ Header
 	
 	<div>
 	
-	<a href ="reBoardList.jsp?page_no=1">[처음으로]</a>
-	<a href ="reBoardList.jsp?page_no<%=pg_sno-1 %>">[이전으로]</a>
+	<a href ="<%=request.getRequestURI() %>?page_no=1">[처음으로]</a>
 	
-	
+	<% 
+	if(  pg_sno == 1 ){ 
+		%>
+		<span style="color:#6666">[이전으로]</span> 
+		<%
+		
+		}else{
+	%>
+	<a href ="reBoardList.jsp?page_no=<%=pg_sno-1 %>">[이전으로]</a>
+	<%
+	}
+	 
+	 %>
+	 
 	<%
 	for( int i=pg_sno; i<=pg_eno; i++){
 	
 	%>
 	
-	<a href ="<%=request.getRequestURI() %>?page_no<%=i%>"><%=i %></a>
+	<a href ="<%=request.getRequestURI() %>?page_no=<%=i %>">
+	
+	<%
+	if( i == Integer.parseInt(page_no)){
+		%>
+		<span style="color:green;font-size:14px;font-wight:bold;"><%=i %></span> 
+	
+	<%
+	}else{ out.print( i+ "");
+		
+	}
+	
+	%>
+									
+	</a>
 	<%
 	}
 	%>
@@ -197,7 +236,7 @@ Header
 	
 	}else{
 	%>
-	<a href="reBoardList.jsp?page_no=<%=pg_eno+1 %>">[다음으로]</a> 	
+		<a href="<%=request.getRequestURI() %>?page_no=<%=pg_eno+1 %>">[다음으로]</a> 	
 	
 	<%
 	}
@@ -205,7 +244,7 @@ Header
 	
 	
 	
-	<a href ="reBoardList.jsp?page_no=<%=totalpage %>">[끝으로]</a>
+	<a href ="<%=request.getRequestURI() %>?page_no=<%=totalpage %>">[끝으로]</a>
 	
 	
 	
