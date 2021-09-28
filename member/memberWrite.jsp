@@ -40,7 +40,7 @@ function fn_submit() {
 		f.userid.focus();
 		return false;
 	}
-	if( f.userpw.value ==""){
+	if( f.pass.value ==""){
 		
 		alert(" 입력해주세요 ");
 		f.userpw.focus();
@@ -213,13 +213,13 @@ Header
 		<th class="th1">휴대전화</th>
 		<td class="td2">
 		
-		<select name="hp1">
+		<select name="ph1">
 			<option value="010"> 010</option>
 			<option  value="011"  >011</option>
 		</select>
 		
-		<input type="text" name="hp2" class="input1" style="width:50px">
-		<input type="text" name="hp3" class="input1" style="width:50px"></td>
+		<input type="text" name="ph2" class="input1" style="width:50px">
+		<input type="text" name="ph3" class="input1" style="width:50px"></td>
 	
 	</tr>
 	<tr>
