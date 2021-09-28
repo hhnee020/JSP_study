@@ -1,6 +1,10 @@
+<%@page import="java.util.Calendar"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-
+<%
+String y= request.getParameter("y");
+String m= request.getParameter("m");
+%>
 <!DOCTYPE html>
 <html lang="kr">
  <head>
@@ -13,6 +17,17 @@
 <style>
 
 </style>
+
+<script>
+
+function fn_change() {
+	var y=document.frm.year.value;
+	var m=document.frm.month.value;
+	
+	location="memberWrite.jsp?y="+y+"&m="+m;
+}
+
+</script>
 
 <body>
 
@@ -32,7 +47,7 @@ Header
 	</aside>
 	<article>
 
-<form name="" method="post" action="">
+<form name="frm" method="post" action="memberWriteSave.jsp">
 
 <table class="table1" align="center">
 	<caption class="caption1">
@@ -47,12 +62,12 @@ Header
 		<th class="th1">아이디</th>
 		<td class="td2">
 			<input type="text" name="userid" class="input2" autofocus placeholder="아이디입력">
-			<input type="button" value="아이디찾기" class="button2" >
+			<input type="button" value="중복 확인 " class="button2"  >
 		</td>
 	</tr>
 	<tr>
 		<th class="th1">암호</th>
-		<td class="td2"><input type="password" name="pass" class="input2"></td>
+		<td class="td2"><input type="password" name="pass" class="input2" placeholder="암호를 입력해주세요"></td>
 	</tr>
 	<tr>
 		<th class="th1">이름</th>
@@ -71,29 +86,104 @@ Header
 	</tr>
 	
 	<tr>
-		<th class="th1">생일</th>
+		<th class="th1">생년월일</th>
 		<td class="td2">
-			<select name="year">
-				<option value="">1998년</option>
-				<option value="">1999년</option>
-				<option value="">2000년</option>
+			<select name="year" onchange="fn_change()">
+			<%
+			//////////////////////생년월일 반복문 처리;
+			Calendar cal = Calendar.getInstance();
+
+			
+			int year = cal.get(Calendar.YEAR);
+			int month = cal.get(Calendar.MONTH)+1;
+			int date = cal.get(Calendar.DATE);
+			
+			int year_start = year - 80;
+			int year_end = year -1;
+			int year_set = year-20;
+			
+			int month_set = 1;
+			
+			int lastday = 31;
+			
+			if( y!= null && m!=null ){
+				
+				cal.set(Integer.parseInt(y), Integer.parseInt(m)-1,1);
+				
+				lastday = cal.getActualMaximum(Calendar.DATE);
+				
+				year_set = Integer.parseInt(y);
+				month_set = Integer.parseInt(m);
+				
+			} ;
+			
+			
+			for( int i= year_start; i<=year_end; i++){
+			%>	
+			
+			
+			<option value="<%=i %>" 
+				<% if ( i== (year_set)){out.print("selected");} %>
+			> <%=i %></option>	
+			
+			<%
+			}
+			
+			%>
 			</select>
-			<select name="month">
-				<option value="">1월</option>
-				<option value="">2월</option>
-				<option value="">3월</option>
+			<select name="month" onchange="fn_change()">
+			
+			<%
+			for( int i=1; i<=12; i++){
+			%>	
+			
+			
+			<option value="<%=i %>"
+			<%if(i == month_set ){
+				out.print("selected");
+			} %>  > <%=i %></option>	
+			
+			<%
+			}
+			
+			%>
+				
 			</select>
 			<select name="day">
-				<option value="">1일</option>
-				<option value="">2일</option>
-				<option value="">3일</option>
+			
+			<%
+			for( int i=1; i<=lastday; i++){
+			%>	
+			
+			
+			<option value="<%=i %>" selected ><%=i %></option>	
+			
+			<%
+			}
+			
+			%>
 			</select>
 		</td>
 	</tr>
+	<tr>
+		<th class="th1">휴대전화</th>
+		<td class="td2">
+		
+		<select name="hp1">
+			<option value="010"> 010</option>
+			<option  value="011"  >011</option>
+		</select>
+		
+		<input type="text" name="hp2" class="input1" style="width:50px">
+		<input type="text" name="hp3" class="input1" style="width:50px"></td>
 	
+	</tr>
 	<tr>
 		<th class="th1">주소</th>
-		<td class="td2"><input type="text" name="addr" class="input1"></td>
+		<td class="td2"><input type="text" name="addr" class="input1" style="width:50px" >
+		<button type="button" >우편번호 </button>
+		<input type="text" name="addr1" class="input1">
+		<input type="text" name="addr2" class="input1"></td>
 	</tr>
 	<tr>
 		<th class="th1">취미</th>
