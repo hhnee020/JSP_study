@@ -4,6 +4,9 @@
 <%
 String y= request.getParameter("y");
 String m= request.getParameter("m");
+
+
+String point =" <span style='color:red' >*</span>";
 %>
 <!DOCTYPE html>
 <html lang="kr">
@@ -20,13 +23,48 @@ String m= request.getParameter("m");
 
 <script>
 
-function fn_change() {
+/*function fn_change() {
 	var y=document.frm.year.value;
 	var m=document.frm.month.value;
 	
 	location="memberWrite.jsp?y="+y+"&m="+m;
-}
+}*/
 
+
+function fn_submit() {
+	var f = document.frm ;
+	
+	if( f.userid.value ==""){
+
+		alert(" 입력해주세요 ");
+		f.userid.focus();
+		return false;
+	}
+	if( f.userpw.value ==""){
+		
+		alert(" 입력해주세요 ");
+		f.userpw.focus();
+		return false;
+	}
+	     
+	if( f.name.value ==""){
+		
+		alert(" 입력해주세요 ");
+		f.name.focus();
+		return false;
+	}
+	
+	if( f.ph1.value =="" ||
+		f.ph2.value =="" ||
+		f.ph3.value =="" ){
+			
+			alert(" 입력해주세요 ");
+			f.ph1.focus();
+			return false;
+	}
+	
+	f.submit();
+}
 </script>
 
 <body>
@@ -47,7 +85,7 @@ Header
 	</aside>
 	<article>
 
-<form name="frm" method="post" action="memberWriteSave.jsp">
+<form name="frm" method="post" action="memberWritesave.jsp">
 
 <table class="table1" align="center">
 	<caption class="caption1">
@@ -59,18 +97,18 @@ Header
 	</colgroup>
 
 	<tr>
-		<th class="th1">아이디</th>
+		<th class="th1" ><%=point %>아이디</th>
 		<td class="td2">
 			<input type="text" name="userid" class="input2" autofocus placeholder="아이디입력">
 			<input type="button" value="중복 확인 " class="button2"  >
 		</td>
 	</tr>
 	<tr>
-		<th class="th1">암호</th>
+		<th class="th1"><%=point %>암호</th>
 		<td class="td2"><input type="password" name="pass" class="input2" placeholder="암호를 입력해주세요"></td>
 	</tr>
 	<tr>
-		<th class="th1">이름</th>
+		<th class="th1"><%=point %> 이름</th>
 		<td class="td2"><input type="text" name="name" class="input2" placeholder="이름입력" ></td>
 	</tr>
 	<!--
@@ -80,15 +118,21 @@ Header
 	-->
 	<tr>
 		<th class="th1">성별</th>
-		<td class="td2">남 <input type="radio" name="gender" value="M">,
-		    여 <input type="radio" name="gender" value="F">
+		<!-- ------<td class="td2">남 <input type="radio" name="gender" value="M">,
+		    여 <input type="radio" name="gender" value="F">-- -->
+		    <td class="td2">
+		    <select  name="gender" >
+		    <option value="M"> 남</option>
+		     <option  value="F"> 여 </option>
+		    
+		    </select>
 		</td>
 	</tr>
 	
 	<tr>
 		<th class="th1">생년월일</th>
 		<td class="td2">
-			<select name="year" onchange="fn_change()">
+			<select name="year" >
 			<%
 			//////////////////////생년월일 반복문 처리;
 			Calendar cal = Calendar.getInstance();
@@ -100,7 +144,7 @@ Header
 			
 			int year_start = year - 80;
 			int year_end = year -1;
-			int year_set = year-20;
+			int year_set = year-20; // 20살로 맞추기 위해
 			
 			int month_set = 1;
 			
@@ -131,7 +175,7 @@ Header
 			
 			%>
 			</select>
-			<select name="month" onchange="fn_change()">
+			<select name="month">
 			
 			<%
 			for( int i=1; i<=12; i++){
@@ -205,8 +249,10 @@ Header
 
 	<tr>
 		<th class="th1" colspan="2">
-			<input type="submit" value="저장" class="button1">
-			<input type="reset" value="재설정" class="button1">
+			<button type="submit" value="저장" class="button1" onclick="fn_submit(); return false;" >
+			등록</button>
+			<button type="reset" value="재설정" class="button1">
+			취소</button>
 		</th>
 	</tr>
 </table>
