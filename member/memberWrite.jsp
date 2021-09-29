@@ -23,12 +23,24 @@ String point =" <span style='color:red' >*</span>";
 
 <script>
 
-/*function fn_change() {
+function fn_change() {
 	var y=document.frm.year.value;
 	var m=document.frm.month.value;
+	var lastDate =new Date(y,m,0).getDate();
+	// 7월의 마지막 : var lastDate =new Date(2020,7,0).getDate();
+	// --> var lastDate =new Date(2020,6,31).getDate();
 	
-	location="memberWrite.jsp?y="+y+"&m="+m;
-}*/
+	var options="";
+		for(var i=1; i<=lastDate; i++){
+			options +=" <option value='"+i+"'>"+i+"</option>"
+		}
+		
+		document.getElementById('day').innerHTML= options;
+	
+}
+
+
+
 
 
 function fn_submit() {
@@ -40,7 +52,7 @@ function fn_submit() {
 		f.userid.focus();
 		return false;
 	}
-	if( f.pass.value ==""){
+	if( f.userpw.value ==""){
 		
 		alert(" 입력해주세요 ");
 		f.userpw.focus();
@@ -54,16 +66,32 @@ function fn_submit() {
 		return false;
 	}
 	
-	if( f.ph1.value =="" ||
-		f.ph2.value =="" ||
-		f.ph3.value =="" ){
+	if( f.hp1.value =="" ||
+		f.hp2.value =="" ||
+		f.hp3.value =="" ){
 			
 			alert(" 입력해주세요 ");
-			f.ph1.focus();
+			f.hp1.focus();
 			return false;
 	}
 	
 	f.submit();
+
+
+}
+
+
+
+function fn_idcheck() {
+	
+	var userid = document.frm.userid.value;
+	if( userid == "" ){
+		alert(" 입력해주세요 ");
+		return false;
+		
+	}
+	var url="idcheck.jsp?userid="+userid;
+	window.open(url, "idcheck", "width=300,height=150");
 }
 </script>
 
@@ -100,12 +128,12 @@ Header
 		<th class="th1" ><%=point %>아이디</th>
 		<td class="td2">
 			<input type="text" name="userid" class="input2" autofocus placeholder="아이디입력">
-			<input type="button" value="중복 확인 " class="button2"  >
+			<input type="button" value="중복 확인 " class="button2" onclick="fn_idcheck()" >
 		</td>
 	</tr>
 	<tr>
 		<th class="th1"><%=point %>암호</th>
-		<td class="td2"><input type="password" name="pass" class="input2" placeholder="암호를 입력해주세요"></td>
+		<td class="td2"><input type="password" name="userpw"  class="input2" placeholder="암호를 입력해주세요"></td>
 	</tr>
 	<tr>
 		<th class="th1"><%=point %> 이름</th>
@@ -150,7 +178,7 @@ Header
 			
 			int lastday = 31;
 			
-			if( y!= null && m!=null ){
+			/*if( y!= null && m!=null ){
 				
 				cal.set(Integer.parseInt(y), Integer.parseInt(m)-1,1);
 				
@@ -159,7 +187,7 @@ Header
 				year_set = Integer.parseInt(y);
 				month_set = Integer.parseInt(m);
 				
-			} ;
+			} ;*/
 			
 			
 			for( int i= year_start; i<=year_end; i++){
@@ -175,17 +203,14 @@ Header
 			
 			%>
 			</select>
-			<select name="month">
+			<select name="month" onchange="fn_change() " >
 			
 			<%
 			for( int i=1; i<=12; i++){
 			%>	
 			
 			
-			<option value="<%=i %>"
-			<%if(i == month_set ){
-				out.print("selected");
-			} %>  > <%=i %></option>	
+			<option value="<%=i %>"<%if(i == month_set ){ out.print("selected"); } %>  > <%=i %></option>	
 			
 			<%
 			}
@@ -193,14 +218,14 @@ Header
 			%>
 				
 			</select>
-			<select name="day">
+			<select name="day" id="day">
 			
 			<%
-			for( int i=1; i<=lastday; i++){
+			for( int i=1; i<=31; i++){
 			%>	
 			
 			
-			<option value="<%=i %>" selected ><%=i %></option>	
+			<option value="<%=i %>"  ><%=i %></option>	
 			
 			<%
 			}
@@ -213,21 +238,23 @@ Header
 		<th class="th1">휴대전화</th>
 		<td class="td2">
 		
-		<select name="ph1">
+		<select name="hp1">
 			<option value="010"> 010</option>
 			<option  value="011"  >011</option>
 		</select>
 		
-		<input type="text" name="ph2" class="input1" style="width:50px">
-		<input type="text" name="ph3" class="input1" style="width:50px"></td>
-	
+		<input type="text" name="hp2" class="input1" style="width:48px;" maxlength="4">
+		<input type="text" name="hp3" class="input1" style="width:48px;" maxlength="4">
+		</td>
 	</tr>
 	<tr>
 		<th class="th1">주소</th>
-		<td class="td2"><input type="text" name="addr" class="input1" style="width:50px" >
-		<button type="button" >우편번호 </button>
+		<td class="td2">
+		<input type="text" name="zipcode" class="input1" style="width:48px;" maxlength="6">
+		<button type="button">우편번호 </button>
 		<input type="text" name="addr1" class="input1">
-		<input type="text" name="addr2" class="input1"></td>
+		<input type="text" name="addr2" class="input1">
+		</td>
 	</tr>
 	<tr>
 		<th class="th1">취미</th>
