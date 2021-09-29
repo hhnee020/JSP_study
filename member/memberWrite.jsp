@@ -1,7 +1,10 @@
 <%@page import="java.util.Calendar"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+
+ <%@ include file ="../include/dbcon.jsp" %>
 <%
+
 String y= request.getParameter("y");
 String m= request.getParameter("m");
 
@@ -41,10 +44,16 @@ function fn_change() {
 
 
 
-
-
 function fn_submit() {
 	var f = document.frm ;
+	
+	
+	if( f.idcheck.value != "Y" ) {
+		alert("중복체크를 해주세요.");
+		return false;
+	}
+	
+////////////////////////////////////////	
 	
 	if( f.userid.value ==""){
 
@@ -52,6 +61,14 @@ function fn_submit() {
 		f.userid.focus();
 		return false;
 	}
+	
+	if( f.userid.length < 4 || f.userid.length > 12 ) {
+
+		alert(" 4~12 사이로 입력해주세요 ");
+		f.userid.focus();
+		return false;
+	}
+	
 	if( f.userpw.value ==""){
 		
 		alert(" 입력해주세요 ");
@@ -81,17 +98,35 @@ function fn_submit() {
 }
 
 
-
 function fn_idcheck() {
 	
 	var userid = document.frm.userid.value;
-	if( userid == "" ){
-		alert(" 입력해주세요 ");
+	if( userid == "" ) {
+		alert("아이디를 입력해주세요~");
 		return false;
-		
 	}
-	var url="idcheck.jsp?userid="+userid;
-	window.open(url, "idcheck", "width=300,height=150");
+	if( userid.length < 4 || userid.length > 12 ) {
+		alert("아이디는 4자~12사이로 해주세요.");
+		return false;
+	}
+	
+	var w = window.screen.width/2 - 150;
+	var h = window.screen.height/2 - 75;
+	
+	var url = "idcheck.jsp?userid="+userid;
+	window.open(url,"idcheck","width=300,height=150,left="+w+",top="+h);
+}
+
+function fn_post() {
+	
+	var  zipcode= document.frm.zipcode.value;
+	var w = window.screen.width/2 - (520/2);
+	var h = window.screen.height/2 - (300/2);
+	
+	
+	var url="postcheck.jsp";
+	window.open(url, "post" , "width=520,height=300,left="+w+",top="+h   );
+	
 }
 </script>
 
@@ -127,8 +162,11 @@ Header
 	<tr>
 		<th class="th1" ><%=point %>아이디</th>
 		<td class="td2">
-			<input type="text" name="userid" class="input2" autofocus placeholder="아이디입력">
-			<input type="button" value="중복 확인 " class="button2" onclick="fn_idcheck()" >
+			<input type="text" name="userid" class="input2" autofocus placeholder="아이디입력"  onchange="document.frm.idcheck.value='N'" >
+			<!-- onchange="document.frm.idcheck.value='N' 
+			아이디 value 값이 변하면 중복 체크 N - -->
+			
+			<input type="button" value="중복 확인 " class="button2" onclick="fn_idcheck()">
 		</td>
 	</tr>
 	<tr>
@@ -251,7 +289,7 @@ Header
 		<th class="th1">주소</th>
 		<td class="td2">
 		<input type="text" name="zipcode" class="input1" style="width:48px;" maxlength="6">
-		<button type="button">우편번호 </button>
+		<button type="button" onclick="fn_post()" >우편번호 </button>
 		<input type="text" name="addr1" class="input1">
 		<input type="text" name="addr2" class="input1">
 		</td>
