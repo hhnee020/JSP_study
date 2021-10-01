@@ -8,6 +8,8 @@
 </head>
 <body>
 
-
+<div>
+회사 소개 | 주소 | <a href="/jsp_study/admin/login.jsp">어드민</a>
+</div>
 </body>
 </html>
