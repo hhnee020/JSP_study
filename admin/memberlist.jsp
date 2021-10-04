@@ -15,7 +15,7 @@ String s_gender = request.getParameter("s_gender"); ///null ,f,m
 
 String s_age = request.getParameter("s_age");
 
-
+String s_date = request.getParameter("s_date");
 
 if(s_field == null || s_text == null) {
 	s_field = "";
@@ -36,6 +36,13 @@ if( s_gender== null ) {
 if( s_age    == null ) {
 	
 	s_age = "";
+}
+
+/////////////////////////////// 등록일
+
+if( s_date    == null ) {
+	
+	s_date = "";
 }
 
 
@@ -105,6 +112,32 @@ search += " and (to_char(sysdate ,'yyyy')) - to_char(birth,'yyyy') +1 = '"+s_age
 //where (to_char(sysdate ,'yyyy')) - to_char(birth,'yyyy') +1  =21;
 }
 
+
+
+/////////////////////
+
+if( !s_date.equals("")  ){
+	
+	
+	/*/////// 2020 , 2020-02 , 2020-02-25
+	if( s_date.length() ==4 ){
+	search += " and to_char(rdate,'yyyy' ) ='"+s_date+"' ";
+	//select * from member_info where to_char( rdate ,'yyyy' ) = '2021 -02-21';
+	
+	}else if( s_date.length() ==7){
+		search += " and to_char(rdate,'yyyy-mm' ) ='"+s_date+"' ";
+		
+	}else if( s_date.length() == 10){
+		search += " and to_char(rdate,'yyyy-mm-dd' ) ='"+s_date+"' ";
+			
+	}*/
+	
+		search += " and  to_char(rdate , 'yyyy-mm-dd' ) like '"+s_date+"%' ";//s_date 로 시작
+		//select * from member_info where to_char( rdate ,'yyyy' ) = '2021 -02-21';
+		
+		
+	
+}
 
 /////////////////////////////////////
 %>
@@ -222,6 +255,10 @@ td {
 				<option value="M"  <% if(s_field.equals("M")) { out.print("selected"); } %>>남성</option>
 				<option value="F"  <% if(s_field.equals("F")) { out.print("selected"); } %>>여성</option>
 			</select>
+			
+			
+			<input type="text" name="s_date" value="<%=s_date %>" placeholder="등록일 검색"  style="width:80px;">
+			
 			
 			
 			<select name="s_field">
