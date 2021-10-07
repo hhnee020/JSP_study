@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
-
 <!DOCTYPE html>
 <html lang="kr">
  <head>
@@ -22,18 +21,20 @@ Header
 </header>
 
 <nav>
-<div>
-<%@ include file="../include/topmenu.jsp" %>
-</div>
+	<!-- 탑 메뉴 시작 -->
+	<%@ include file="../include/topmenu.jsp" %>
+	<!-- 탑 메뉴 종료 -->
 </nav>
 
 <section>
 	<aside>
-	 <%@ include file="../include/leftmenu.jsp" %>
+		<!-- 좌 메뉴 시작 -->
+		<%@ include file="../include/leftmenu.jsp" %>
+		<!-- 좌 메뉴 종료 -->
 	</aside>
 	<article>
 
-<form name="" method="post" action="">
+<form name="frm" method="post" action="loginWriteSub.jsp">
 
 <table class="table1" align="center" style="width:400px;"> 
 	<caption class="caption1">로그인 화면</caption>
@@ -45,7 +46,7 @@ Header
 	</tr>
 	<tr>
 		<th class="th1">암호</th>
-		<td class="td2"><input type="password" name="pass" class="input1"></td>
+		<td class="td2"><input type="password" name="userpw" class="input1"></td>
 	</tr>
 	<tr>
 		<th class="th1" colspan="2">
@@ -61,7 +62,7 @@ Header
 </section>
 
 <footer>
-<%@ include file="../include/footmenu.jsp" %>
+	<%@ include file="../include/footmenu.jsp" %>
 </footer>
 
 </body>
