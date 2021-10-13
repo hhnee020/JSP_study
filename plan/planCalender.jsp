@@ -2,6 +2,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
+
+<%@ include file="../include/loginCertify.jsp" %>
 <%
 String year = request.getParameter("year");
 String month = request.getParameter("month");
@@ -98,6 +100,15 @@ function fn_planWrite() {
 	var h = window.screen.height/2 - 200;
 	window.open(url,"planWrite","width=500,height=400,left="+w+",top="+h);
 }
+// 2021-10-15
+function fn_planModify(v) {
+	
+	var url = "planModify.jsp?appdate="+v;
+	var w = window.screen.width/2 - 250;
+	var h = window.screen.height/2 - 200;
+	window.open(url,"planWrite","width=500,height=400,left="+w+",top="+h);
+	
+}
 </script>
 
 <body>
@@ -173,14 +184,23 @@ Header
 				cnt++;
 				out.print("<td></td>");
 			}
-			%>
-		
-			<%
 			for(int d=1; d<=lastday; d++) {
 				cnt++;
+				
+				String date = yy + "-" + (((mm+1)<10)?"0"+(mm+1):(mm+1)) + "-" + ((d<10)?"0"+d:d);
+				
+				String sql = "select substr(title,0,10) title from schedule "    // 2021-10-15
+						   + "   where userid='"+LOGIN_USERID+"' and to_char(appdate,'yyyy-mm-dd')='"+date+"' ";
+				ResultSet rs = stmt.executeQuery(sql);
+				String title = "";
+				if( rs.next() ) {  title = rs.getString("title");  }
 			%>
 				<td>
-				<%=d %>
+				
+				<a href="javascript:fn_planModify('<%=date %>')"><%=d %></a>
+				
+				<br>
+				<%=title %>
 				</td>
 			<%
 				if( cnt%7 == 0 ) {
