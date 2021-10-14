@@ -1,0 +1,81 @@
+* {margin: 0 auto; padding: 0; text-align: center; text-decoration: none;
+list-style: none;}
+
+.clearfix::before,
+.clearfix::after{ display: block; content: ''; clear: both;}
+#wrap{width: 1200px; margin: 0 auto; }
+header{ width: 100%;  line-height: 60px;    color: #999 }
+
+img{width: 100%;}
+.logo{float: left; width: 100px; }
+
+.login{float: right; width: 300px ;  }
+
+.nav1 > li { width: 70px; display: inline-block; }
+.nav1 > li > a{ color: #999; border-left: 1px solid #999;
+    padding-left: 15px;} 
+
+
+.nav{ float: left; width: 100% ; background: #04b4f6;}
+.nav >ul>li{width: 10% ; float: left;} 
+.nav > ul> li > a{ color: #fff ;  } 
+.nav-tabs>li>a{ color: #fff ; background: #04b4f6}
+.nav2 >ul { width: 100%; float: left;}
+.nav2>ul>li{width: 12%; float: left;}
+.nav2 > ul> li > a{ color: #999   ; border-right: 1px solid #999;
+    padding-right: 20px; } 
+
+
+.caption1 >h2{ margin: 15px;}
+.sec1{ margin: 5%;}
+table, th, td {border-collapse: collapse; border: 1px solid #ddd; }
+.th1 { color:#fff; background-color: #04b4f6;}
+.th1 ,.td1, .th1 > a ,.td1 > a{text-align: center; }
+.td1 > a { color : #666; }
+
+.table1{ width: 1000px; color : #ddd; border: solid 1px ; }
+.table1 h5{ color : #666;}
+
+.div1{ margin-top: 5px ; }
+.btn1 > .btn-primary{
+    background-color: #04b4f6;
+    border-color: #04b4f6;
+    color: #FFF;}
+
+
+
+.btn0{  border-top: 1px solid #666; margin: 10px;  }
+
+.btn0 > .btn{  margin: 5px; float: right; width: 10%;}
+.btn0 > .btn> a{ color: #fff;}
+
+
+.popupadm1  tr {height: 50px;}
+.popupbtn1 > .btn-primary{
+    background-color: #04b4f6;
+    border-color: #04b4f6;
+    color: #fff;
+}
+
+
+.tab_con1{ width: 100%; float: left; }
+.tab_con1> li{      width: 30%;float: left;margin-left: 3%; margin-top: 3%;}
+
+.tabs_desc  > h4 ,span{   display:block; text-align: left; ; }
+.tabs_desc  > h4 { font-size: 16px;  font-weight: 500; }
+.tabs_desc  > .addr{ font-size: 13px;}
+.tabs_desc  > .heart{ color: #999; font-size: 13px;}
+.tab_price { color: #04b4f6; font-size: 18px; font-weight: 900;  };
+
+.tab_con2{ width: 100%; float: left;}
+.tab_con2> li{width: 90%;float: left;margin-top: 5%;}
+.tab_story_con1{ font-size: 16px;}
+.tab_story_addr{ font-size: 14px; line-height: 18px;margin-top: 6px;color: #868e96;
+}
+.hr_border{display: block;height: 1px;border: 0;border-top: 1px solid #e9ecef; padding: 0;}
+.chat {float: right;}
+
+
+
+
+

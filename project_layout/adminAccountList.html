@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <title>관리자 계정 관리</title>
+</head>
+
+<script>
+    function fn_popup1(){
+    
+        var url = "adminAccountSubmit.html";
+        window.open(url,"adminAccountSubmit","width=400, height=430");
+    }
+    
+    function fn_popup2(){
+    
+    var url = "adminAccountModify.html";
+    window.open(url,"adminAccountModify","width=400, height=430");
+    }
+
+    function fn_popup3(){
+    
+    var url = "adminAccountDelete.html";
+    window.open(url,"adminAccountDelete","width=400, height=430");
+    }
+    
+    </script>
+
+<body>
+
+<div id="wrap">
+
+<header class="clearfix">
+    <h1 class="logo"><img src="img/logo.png"></h1>
+    
+
+    <div class="login ">
+        
+        <ul class="nav1">
+        <li>
+            <a href="">관리자</a></li>
+        <li>
+            <a href="">로그아웃</a></li>
+
+    </ul>
+    </div>
+    
+    <nav class="nav clearfix "> 
+        
+        <ul class="">
+            <li><a href="">공지사항</a></li>
+            <li><a href="">회원정보</a></li>
+            <li><a href="">게시판 관리</a></li>
+            <li><a href="">관리자 관리</a>
+            
+            </li>
+            
+            <li><a href="">문의 상담</a></li>
+            <li><a href="">접속통계</a></li>
+        </ul>    
+    
+    </nav>
+
+    <nav class="nav2 clearfix "> 
+    <ul class="">
+        <li><a href="adminAccountList.html">관리자 계정 관리</a></li>
+        <li><a href="admintGrant.html">관리자 권한 관리</a></li>
+        <li><a href="admintNotice.html">관리자 공지사항 관리</a></li>
+    </ul> 
+    </nav>
+
+
+</header>
+
+
+
+<section class="sec1">
+
+    <table class="table1 clearfix">
+        
+        <caption class="caption1" ><h5 style="text-align: left;">관리자 계정 관리</h5></caption>
+
+      
+
+            <colgroup>
+                <col width="10%"/>
+                <col width="10%"/>
+                <col width="10%"/>
+                <col width="30%"/>
+                <col width="30%"/>
+                <col width="30%"/>
+            </colgroup>
+            
+            
+            <div class="btn1">
+                <select name="" id="">
+                <option value="">검색 조건</option>
+                <option value="">검색 조건</option>
+                <option value="">검색 조건</option>
+                </select>
+                
+                <input type="text" style="width:30%">
+                
+                <button class="btn btn-primary" type="submit">조회</button>
+
+                 </div>
+
+
+                <div class="btn0 btn1 btn2 ">
+                    <button class="btn  btn-primary" type="submit"
+                    onClick="fn_popup1(); return false;">등록</button>
+                    <button class="btn btn-primary" type="submit"
+                    onClick="fn_popup2(); return false;">수정</button>
+                    <button class="btn btn-primary" type="submit"onClick="fn_popup3(); return false;">삭제</button>
+                    </div>
+                
+               
+
+                <tr>
+                <th class="th1">
+                    <input type="checkbox"></th>
+                <th class="th1">번호</th>
+                <th class="th1">아이디</th>
+                <th class="th1">권한명</th>
+                <th class="th1">설명</th>
+                <th class="th1">등록일시</th>
+            </tr>
+            <tr>
+                <th class="td1"><input type="checkbox"></th>
+                <th class="td1">1</th>
+                <th class="td1" ><a href="">아이디1</a>
+                </th>
+                
+            <th class="td1"><a href="adminGrantSubmit.html" onClick="window.open(this.href, '', 'width=400, height=430'); return false;">관리자</a></th>
+                <th class="td1"><a onClick="fn_popup2(); return false;">설명</a></th>
+                <th class="td1"><a href="">등록일시</a></th>
+            </tr>
+
+</table>
+
+
+
+
+</section>
+
+</div>
+
+
+</body>
+</html>
