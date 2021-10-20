@@ -10,40 +10,11 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    
-    <script>
-$(function(){
-    $("li").slice(0, 3).show(); 
-    $("#load1").click(function(e){ 
-        e.preventDefault();
-        $("li:hidden").slice(0, 10).show(); 
-        if($("li:hidden").length == 0){
-          
-        }
- });   
-});
-
-$(function(){
-    $("li").slice(0, 3).show(); 
-    $("#load2").click(function(e){ 
-        e.preventDefault();
-        $("li:hidden").slice(0, 10).show();
-        if($("li:hidden").length == 0){
-          
-        }
- });   
-});
-
-    </script>
-
     <title>Need</title>
 </head>
 
-
-
-
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <body>
     <div id="wrap">
         <div style="padding-top: 1.5%;">
@@ -65,7 +36,7 @@ $(function(){
                 </form>
                 <div class="login" style="width: 400px;">
                     <ul class="nav1">
-                        <li >
+                        <li>
                             <a href="">이보민</a></li>
                         <li>
                             <a Search>정보수정</a></li>
@@ -77,24 +48,24 @@ $(function(){
         </div>
         
 
-        <section class="clearfix">
+        <section>
 
             <div style='width:1000px;margin:0 auto;margin-top:50px;'>
-                <ul class="nav nav-tabs " style=" background: none; position: relative;">
+                <ul class="nav nav-tabs " style=" background: none;">
                     <li class='active' style="width: 200px;">
                         <a href="#tabmenu_01" data-toggle="tab"> 중고 거래</a></li>
                     <li style="width: 200px;">
                         <a href="#tabmenu_02" data-toggle="tab"> 동네 정보 </a></li>
-                   <button class="tab_con_btn btn btn-primary" style="width: 200px; background-color: #04b4f6;border-color: #04b4f6;color: #fff; float: right;" > 글쓰기 </button>
+                  
                 </ul>
-                   
+                
                 <div class="tab-content" >
                     
                     <div class="tab-pane fade in active" id="tabmenu_01">
                         
-                        <ul class="tab_con1 clearfix" >
+                        <ul class="tab_con1" >
                             
-                            <li id="list">
+                            <li >
                             <img src="img/img_thumb1.png" alt="">
 
                             <div class="tabs_desc">
@@ -103,11 +74,10 @@ $(function(){
                                 <span class="tab_price">170,000원</span>
                                 <span class="addr">서울 구로구 개봉제2동</span>
                                 <span class="heart">관심 15</span>
-                                <span class="clearfix heartwrap"><i class="hearticon bi bi-heart"><a href="">9</a></i></span>
                             </div>
                             </li>
                            
-                            <li id="list" >
+                            <li >
                                 <img src="img/img_thumb1.png" alt="">
                                 
                                 <div class="tabs_desc" >
@@ -115,11 +85,10 @@ $(function(){
                                     <span class="tab_price">1,100,000원</span>
                                     <span class="addr">부산 부산진구 전포동</span>
                                     <span class="heart">관심 15</span>
-                                    <span class="clearfix heartwrap"><i class="hearticon bi bi-heart"><a href="">9</a></i></span>
                                 </div>
                             </li>
 
-                            <li id="list">
+                            <li >
                                 
                                 <img src="img/img_thumb1.png" alt="">
                                 
@@ -128,173 +97,50 @@ $(function(){
                                     <span class="tab_price">20,000원</span>
                                     <span class="addr">대구 북구 산격동</span>
                                     <span class="heart">관심 15</span>
-                                    <span class="clearfix heartwrap"><i class="hearticon bi bi-heart"><a href="">9</a></i></span>
                                 </div>
                             </li>
 
-
-                               
-                                <!------  ---------------->
-                                
-                                <li id="list" class="tab_more_li" style="display: none;">
-
-                                    <img src="img/img_thumb1.png" alt="">
-                                    
-                                    <div class="tabs_desc">
-                                        <h4 class="tab_name">컴퓨터 본체 풀세트</h4>
-                                        <span class="tab_price">900,000원</span>
-                                        <span class="addr">서울 강동구 둔촌제2동</span>
-                                        <span class="heart">관심 15</span>
-                                        <span class="clearfix heartwrap"><i class="hearticon bi bi-heart"><a href="">9</a></i></span>
-                                    </div>
-                                </li>
-
-                                <li  id="list" class="tab_more_li" style="display: none;">
-                                
-                                    <img src="img/img_thumb1.png" alt="">
-                                    
-                                    <div class="tabs_desc">
-                                        <h4 class="tab_name">사무용/컴퓨터 의자 판매</h4>
-                                        <span class="tab_price">30,000원</span>
-                                        <span class="addr">부산 상사구 괘법동</span>
-                                        <span class="heart   ">관심 15</span>
-                                        <span class="clearfix heartwrap"><i class="hearticon bi bi-heart"></i> <a href="">9</a></span>
-                                    </div>
-                                </li>
-
-                                <li id="list" class="tab_more_li" style="display: none;">
-
-
-                                    <img src="img/img_thumb1.png" alt="">
-                                    
-                                    <div class="tabs_desc">
-                                        <h4 class="tab_name">에어팟 프로</h4>
-                                        <span class="tab_price">230,000원</span>
-                                        <span class="addr">경기도 하남시 덕풍동</span>
-                                        <span class="heart">관심 15</span>
-                                        <span class="clearfix heartwrap"><i class="hearticon bi bi-heart"><a href="">9</a></i></span>
-                                    </div>
-                                </li>
-
-                                
-                                <a href="#" id="load1">Load More</a> 
+                      </ul>
+                        
                     </div>
 
 
-                    <div class="tab-pane fade"  id="tabmenu_02">
+                    <div class="tab-pane fade" id="tabmenu_02">
 
 
-                        <ul class="tab_con2 clearfix">
-                            
-                            <li id="list">
-                                <div class="tab_con2_container clearfix">
+                        <ul class="tab_con2">
+                            <li>
+                                <div>
                                     <span class="tab_story_con1">서정리 주변 캠핑할곳 추천좀요. 지하철 진위역 가까운데 캠핑장 있나요? 이번주 주말 멀리서 친구가 오는데 단순히 고기, 해산물 가져가서 소주한잔 하면서 오랜만에 늦게까지 친구랑 얘기하고 놀고 싶어서요
                                     
                                     </span>
                                     
-                                   
-                                        <span class="tab_story_addr">부산 부산진구 전포동</span>
-                                        
-                                        <div class="chatdiv">
-                                            <span>
-                                            <i class="chaticon bi bi-chat"><a>9</a></i>
-                                            </span>
-                                        </div>
+                                    <span class="tab_story_addr">부산 부산진구 전포동</span>
+                                    
                                     <hr class="hr_border">
 
+                                    
+                                    
                                 </div>
                             </li>
 
-
-
-                            <li id="list">
+                            <li>
                                 <div>
                                     <span class="tab_story_con1">혹시 이번주말 캠핑 난로 대여 가능하신분 계실까요? 갑자기 날씨가 추워져서 난로가 필요할꺼 같아요ㅠ 적정 수준으로 사례 하겠습니다.</span>
-                                    
                                     <span class="tab_story_addr">서울 서대문구 남가좌동</span>
-
-                                    <div class="chatdiv">
-                                        <span>
-                                        <i class="chaticon bi bi-chat"><a>9</a></i>
-                                        </span>
-                                    </div>
                                     <hr class="hr_border">
                                    
                                 </div>
                             </li>
-                             
-                            <li id="list" class="list2" >
+
+                            <li>
                                 <div>
                                     <span class="tab_story_con1">문제집 스캔해서 아이패드에 넣으려고 하는데 울산시청이나 공업탑 근처에 pdf파일로 스캔해주는 복사집 아시는 분 있으신가요ㅎㅎ 비용은 얼마정도 할까요??</span>
-                                  
-                                        <span class="tab_story_addr">서울 서대문구 남가좌동</span>
-                                         <div class="chatdiv">
-                                            <span>
-                                            <i class="chaticon bi bi-chat"><a>9</a></i>
-                                            </span>
-                                        </div>
+                                    <span class="tab_story_addr">울산 중구 반구동</span>
                                     <hr class="hr_border">
                                     
                                 </div>
-
                             </li>
-
-
-                           
-                            
-                              <li id="list" style="display: none;">
-                                <div>
-                                    <span class="tab_story_con1">문제집 스캔해서 아이패드에 넣으려고 하는데 울산시청이나 공업탑 근처에 pdf파일로 스캔해주는 복사집 아시는 분 있으신가요ㅎㅎ 비용은 얼마정도 할까요??</span>
-                                    
-                                        <span class="tab_story_addr">서울 서대문구 남가좌동</span>
-                                        <div class="chatdiv">
-                                            <span>
-                                            <i class="chaticon bi bi-chat"><a>9</a></i>
-                                            </span>
-                                        </div>
-                                       
-                                    <hr class="hr_border">
-                                    
-                                </div>
-
-                            </li>
-
-                            <li id="list" style="display: none;">
-                                <div>
-                                    <span class="tab_story_con1">문제집 스캔해서 아이패드에 넣으려고 하는데 울산시청이나 공업탑 근처에 pdf파일로 스캔해주는 복사집 아시는 분 있으신가요ㅎㅎ 비용은 얼마정도 할까요??</span>
-                                    
-                                        <span class="tab_story_addr">서울 서대문구 남가좌동</span>
-                                        
-                                        <div class="chatdiv">
-                                            <span>
-                                            <i class="chaticon bi bi-chat"><a>9</a></i>
-                                            </span>
-                                        </div>
-                                    <hr class="hr_border">
-                                    
-                                </div>
-
-                            </li>
-
-                            <li id="list" style="display: none;">
-                                <div>
-                                    <span class="tab_story_con1">문제집 스캔해서 아이패드에 넣으려고 하는데 울산시청이나 공업탑 근처에 pdf파일로 스캔해주는 복사집 아시는 분 있으신가요ㅎㅎ 비용은 얼마정도 할까요??</span>
-                                    
-                                        <span class="tab_story_addr">서울 서대문구 남가좌동</span>
-                                        
-                                        <div class="chatdiv">
-                                            <span>
-                                            <i class="chaticon bi bi-chat"><a>9</a></i>
-                                            </span>
-                                        </div>
-
-                                    <hr class="hr_border">
-                                    
-                                </div>
-
-                            </li>
-
-                            <a href="#" id="load2">Load More</a> 
                         </ul>
 
 
@@ -312,10 +158,5 @@ $(function(){
 
     </div>
     
-    <footer class="foot">
-
-
-        
-    </footer>
 </body>
 </html>
