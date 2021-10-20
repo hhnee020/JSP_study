@@ -75,7 +75,34 @@ if( cookie_id == null ) cookie_id="";
 	float:left;
 }
 
+.btn_span {
+	padding : 5px;
+	background-color: orange;
+}
 </style>
+
+<script>
+
+function fn_pollEnter(v) {
+	
+	var url = "pollEnter.jsp?code="+v;
+	var w   = window.screen.width/2 - 200;
+	var h   = window.screen.height/2 - 200;
+	window.open(url,"popup","width=400,height=400,left="+w+",top="+h);
+	
+}
+
+function fn_pollret(v) {
+	
+	
+	var url = "pollret.jsp?code="+v;
+	var w   = window.screen.width/2 - 200;
+	var h   = window.screen.height/2 - 200;
+	window.open(url,"popup","width=400,height=400,left="+w+",top="+h);
+	
+}
+
+</script>
 
 <body>
 
@@ -102,28 +129,30 @@ Header
    		
    		<table style="width:98%;">
    			<tr>
-   				<td width="70%">온라인투표</td>
-   				<td width="30%">+</td>
+   				<td width="60%" height="50">온라인투표</td>
+   				<td width="40%">+</td>
    			</tr>
-   			<tr>
-   				<td colspan="2">
-   			<ul >
-   			<%
+   			
+   			
+   		   <%
    			while(rs.next()) {
    				String code = rs.getString("code");
    				String title = rs.getString("title");
-   			%>
-   				<li>
+   			%>	
+   			<tr>
+   				<td align="left" height="24">
 	   				<%=title %>
-	   				<span class="btn_span">응모</span>
-	   				<span class="btn_span">결과</span>
-   				</li>
+	   			</td>
+	   			<td>
+	   				<span class="btn_span"><a href="javascript:fn_pollEnter('<%=code %>')">응모</a></span>
+	   				<span class="btn_span"><a href="javascript:fn_pollret('<%=code %>')">결과</a></span>
+   				</td>
+   			</tr>
    			<%
    			}
    			%>
-   			</ul>
-   				</td>
-   			</tr>
+   			
+   			
    		</table>
    		
    		
